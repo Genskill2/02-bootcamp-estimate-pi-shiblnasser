@@ -1,6 +1,27 @@
 import math
 import unittest
+import random
 
+def wallis(n):
+    ans = float(1)
+
+    for x in range(1,n+1):
+        ans = ans * ((2*n * 2*n)/(((2*n)-1) * (2*n)+1))
+    return ans
+    pass
+
+
+def monte_carlo(n):
+    points_inside = 0
+    for x in range(n):
+        x =random.random()
+        y = random.random()
+        if float(x**2+y**2)<=1:
+            points_inside = points_inside +1
+    ans  = 4*points_inside/n
+    return ans
+        
+    pass
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
         for i in range(0, 5):
